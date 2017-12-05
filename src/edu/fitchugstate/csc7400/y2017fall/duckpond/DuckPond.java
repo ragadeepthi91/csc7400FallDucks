@@ -30,8 +30,8 @@ public class DuckPond {
   public void swimming() {
 	this.drawPond();
     for (DuckType duck: this.ducks) {
-      duck.quack();
-      duck.swim();
+      duck.PerformQuack();
+      duck.PerformSwim();
     }
   }
 
@@ -41,9 +41,9 @@ public class DuckPond {
   public void spook() {
     this.drawSky();
     for (DuckType duck: this.ducks) {
-        duck.quack();
-        duck.quack();
-        duck.fly();
+        duck.PerformQuack();
+        duck.PerformQuack();
+        duck.PerformFly();
       }
   }
 

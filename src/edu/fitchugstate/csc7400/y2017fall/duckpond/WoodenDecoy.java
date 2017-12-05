@@ -15,21 +15,22 @@ public class WoodenDecoy extends Duck {
   /** 
    *  Creates a new wooden decoy with appropriate bitmaps and GIFs
    */
-  public WoodenDecoy() {
+  public WoodenDecoy() 
+  {
     super("decoy_still.bmp", null, "decoy_swim.gif");
+    setFlyBehaviour(new CantFly());
+	setQuackBehaviour(new MuteQuack());
+	setSwimBehaviour(new Float());
+	System.out.println("I am a wooden decoy duck");
   }
 
   /** 
    *  Wooden decoys don't fly.
    */
-  public void fly() {
-    System.out.println("Decoy still swims");
-  }
+  
 
   /** 
    *  Wooden decoys don't quack
    */
-  public void quack() {
-    System.out.println("Decoy is silent");
-  }
+  
 }

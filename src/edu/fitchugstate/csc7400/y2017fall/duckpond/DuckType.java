@@ -20,15 +20,15 @@ public interface DuckType {
   /** 
    *  Shows a flying animation
    */
-  public void fly();
+  public void PerformFly();
 
   /** 
    *  Outputs a quacking sound
    */
-  public void quack();
+  public void PerformQuack();
 
   /** 
    *  Displays a swimming animation
    */
-  public void swim();
+  public void PerformSwim();
 }

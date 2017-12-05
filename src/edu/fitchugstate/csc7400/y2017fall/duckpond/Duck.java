@@ -23,39 +23,73 @@ public class Duck implements DuckType {
    * @param flyingGifFilename the flying GIF file name
    * @param swimmingGifFilename the swimming GIF file name
    */
+	
+	FlyBehaviour flyBehaviour;
+	QuackBehaviour quackBehaviour;
+	SwimBehaviour swimBehaviour;
+	
   public Duck(String bitmapFilename, String flyingGifFilename, String swimmingGifFilename) {
     this.still = this.createBitmap(bitmapFilename);
     this.flying = this.createGif(flyingGifFilename);
     this.swimming = this.createGif(swimmingGifFilename);
   }
 
+  public void setFlyBehaviour(FlyBehaviour fb)
+  {
+	  flyBehaviour = fb;
+  }
+  
+  public void setQuackBehaviour(QuackBehaviour qb)
+  {
+	  quackBehaviour = qb;
+  }
+  
+  public void setSwimBehaviour(SwimBehaviour sb)
+  {
+	  swimBehaviour = sb;
+  }
+  
   /** 
    *  Displays a still of the duck using bitmap
    */
-  public void display() {
+  public void display() 
+  {
     this.still.show();
   }
 
   /** 
    *  Displays a flying animation using the GIF file.
    */
-  public void fly() {
-    this.flying.animate();
+  
+  /*public void fly() 
+  {
+	    this.flying.animate();
+  }*/
+  
+  public void PerformFly()
+  {
+	  flyBehaviour.fly(flying);
+  }
+  
+  public void PerformQuack()
+  {
+	  quackBehaviour.quack();
+  }
+  
+  public void PerformSwim()
+  {
+	  swimBehaviour.swim(swimming);
   }
 
-  /** 
-   *  Makes a quacking sound
-   */
-  public void quack() {
-    System.out.println("Quack");
-  }
 
   /** 
    *  Shows a swimming animation using the GIF file
    */
+  /*
   public void swim() {
     this.swimming.animate();
   }
+  */
 
   /** 
    *  Creates a new bitmap object given a file name
@@ -79,7 +113,7 @@ public class Duck implements DuckType {
   /** 
    *  GIF of duck flying
    */
-  protected GIF flying;
+  protected GIF flying;  
 
   /** 
    *  GIF of duck swimming

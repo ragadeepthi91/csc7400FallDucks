@@ -17,5 +17,9 @@ public class Redhead extends Duck {
    */
   public Redhead() {
 	super("redhead_still.bmp", "redhead_fly.gif", "redhead_swim.gif");
+	flyBehaviour = new FlyWithWings();
+	quackBehaviour = new Quack();
+	swimBehaviour = new GeneralSwim();
+	System.out.println("I am a Redhead duck");
   }
 }
