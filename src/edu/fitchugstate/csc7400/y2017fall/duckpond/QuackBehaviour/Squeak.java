@@ -1,4 +1,4 @@
-package edu.fitchugstate.csc7400.y2017fall.duckpond;
+package edu.fitchugstate.csc7400.y2017fall.duckpond.QuackBehaviour;
 
 public class Squeak implements QuackBehaviour{
       public void quack()

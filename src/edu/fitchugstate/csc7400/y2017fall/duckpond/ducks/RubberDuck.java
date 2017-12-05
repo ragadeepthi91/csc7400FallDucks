@@ -5,21 +5,27 @@
  * 
  * Date: 2017-11-28
  */
-package edu.fitchugstate.csc7400.y2017fall.duckpond;
+package edu.fitchugstate.csc7400.y2017fall.duckpond.ducks;
+import edu.fitchugstate.csc7400.y2017fall.duckpond.Duck;
+
+import edu.fitchugstate.csc7400.y2017fall.duckpond.behaviourfactories.*;
+
 
 /** 
  *  Rubber duck for pond
  */
 public class RubberDuck extends Duck {
-
+	AbstractQuackBehaviourFactory quackfactory = new QuackFactory();
+	AbstractSwimBehaviourFactory swimfactory = new SwimFactory();
+	AbstractFlyBehaviourFactory flyfactory = new FlyFactory();
   /** 
    *  Creates a new rubber duck
    */
   public RubberDuck() {
 	super("rubber_duck_still.bmp", null, "rubber_duck_swim.gif");
-	flyBehaviour = new CantFly();
-	quackBehaviour = new Squeak();
-	swimBehaviour = new Float();
+	setFlyBehaviour(flyfactory.CreateNoFly());
+	setQuackBehaviour(quackfactory.CreateSqueak());
+	setSwimBehaviour(swimfactory.CreateFloatSwim());
 	System.out.println("I am a rubber duck");
   }
 

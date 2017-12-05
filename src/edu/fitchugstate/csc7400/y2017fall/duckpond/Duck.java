@@ -8,6 +8,15 @@
 package edu.fitchugstate.csc7400.y2017fall.duckpond;
 
 import external.GIF;
+import edu.fitchugstate.csc7400.y2017fall.duckpond.FlyBehaviour.FlyBehaviour;
+import edu.fitchugstate.csc7400.y2017fall.duckpond.QuackBehaviour.QuackBehaviour;
+import edu.fitchugstate.csc7400.y2017fall.duckpond.SwimBehaviour.SwimBehaviour;
+import edu.fitchugstate.csc7400.y2017fall.duckpond.behaviourfactories.AbstractFlyBehaviourFactory;
+import edu.fitchugstate.csc7400.y2017fall.duckpond.behaviourfactories.AbstractQuackBehaviourFactory;
+import edu.fitchugstate.csc7400.y2017fall.duckpond.behaviourfactories.AbstractSwimBehaviourFactory;
+import edu.fitchugstate.csc7400.y2017fall.duckpond.behaviourfactories.FlyFactory;
+import edu.fitchugstate.csc7400.y2017fall.duckpond.behaviourfactories.QuackFactory;
+import edu.fitchugstate.csc7400.y2017fall.duckpond.behaviourfactories.SwimFactory;
 import external.Bitmap;
 import external.BitmapImpl;
 import external.GifImpl;
@@ -27,6 +36,7 @@ public class Duck implements DuckType {
 	FlyBehaviour flyBehaviour;
 	QuackBehaviour quackBehaviour;
 	SwimBehaviour swimBehaviour;
+	
 	
   public Duck(String bitmapFilename, String flyingGifFilename, String swimmingGifFilename) {
     this.still = this.createBitmap(bitmapFilename);

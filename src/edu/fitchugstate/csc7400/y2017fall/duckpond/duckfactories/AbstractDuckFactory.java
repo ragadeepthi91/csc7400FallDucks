@@ -1,4 +1,6 @@
-package edu.fitchugstate.csc7400.y2017fall.duckpond;
+package edu.fitchugstate.csc7400.y2017fall.duckpond.duckfactories;
+
+import edu.fitchugstate.csc7400.y2017fall.duckpond.Duck;
 
 public abstract class AbstractDuckFactory 
 {

@@ -1,8 +1,8 @@
-package edu.fitchugstate.csc7400.y2017fall.duckpond;
+package edu.fitchugstate.csc7400.y2017fall.duckpond.SwimBehaviour;
 
 import external.GIF;
 
-public class Float implements SwimBehaviour{
+public class FloatSwim implements SwimBehaviour{
 	   
       public void swim(GIF swimming) 
       {

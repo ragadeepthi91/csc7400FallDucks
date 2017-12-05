@@ -5,21 +5,21 @@
  * 
  * Date: 2017-11-28
  */
-package edu.fitchugstate.csc7400.y2017fall.duckpond;
+package edu.fitchugstate.csc7400.y2017fall.duckpond.ducks;
+
+import edu.fitchugstate.csc7400.y2017fall.duckpond.Duck;
 
 /** 
  *  Redhead duck for pond
  */
 public class Redhead extends Duck {
+	
 
   /** 
    *  Creates new redhead duck with appropriate bitmaps and GIFs.
    */
   public Redhead() {
 	super("redhead_still.bmp", "redhead_fly.gif", "redhead_swim.gif");
-	flyBehaviour = new FlyWithWings();
-	quackBehaviour = new Quack();
-	swimBehaviour = new GeneralSwim();
 	System.out.println("I am a Redhead duck");
   }
 }

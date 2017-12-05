@@ -1,7 +1,23 @@
 package edu.fitchugstate.csc7400.y2017fall.duckpond;
 
+import edu.fitchugstate.csc7400.y2017fall.duckpond.FlyBehaviour.flyRocketPowered;
+import edu.fitchugstate.csc7400.y2017fall.duckpond.QuackBehaviour.Squeak;
+import edu.fitchugstate.csc7400.y2017fall.duckpond.SwimBehaviour.FloatSwim;
+import edu.fitchugstate.csc7400.y2017fall.duckpond.behaviourfactories.AbstractFlyBehaviourFactory;
+import edu.fitchugstate.csc7400.y2017fall.duckpond.behaviourfactories.AbstractQuackBehaviourFactory;
+import edu.fitchugstate.csc7400.y2017fall.duckpond.behaviourfactories.AbstractSwimBehaviourFactory;
+import edu.fitchugstate.csc7400.y2017fall.duckpond.behaviourfactories.FlyFactory;
+import edu.fitchugstate.csc7400.y2017fall.duckpond.behaviourfactories.QuackFactory;
+import edu.fitchugstate.csc7400.y2017fall.duckpond.behaviourfactories.SwimFactory;
+import edu.fitchugstate.csc7400.y2017fall.duckpond.duckfactories.AbstractDuckFactory;
+import edu.fitchugstate.csc7400.y2017fall.duckpond.duckfactories.DuckFactory;
+
 public class DuckSimulator {
 
+	AbstractQuackBehaviourFactory quackfactory = new QuackFactory();
+	AbstractSwimBehaviourFactory swimfactory = new SwimFactory();
+	AbstractFlyBehaviourFactory flyfactory = new FlyFactory();
+	
 	public static void main(String[] args) 
 	{
 		DuckSimulator simulator = new DuckSimulator();
@@ -9,28 +25,39 @@ public class DuckSimulator {
 		simulator.simulate(duckFactory);
 	}
 	
-	void simulate(AbstractDuckFactory duckFactory) {
+	void simulate(AbstractDuckFactory duckFactory) 
+	{
+		System.out.println("\nDuck Simulator: With Abstract Factory");
 		Duck mallardDuck = duckFactory.CreateMallardDuck();
 		Duck redheadDuck = duckFactory.CreateRedHeadDuck();
 		Duck decoyDuck = duckFactory.CreateDecoyDuck();
 		Duck rubberDuck = duckFactory.CreateRubberDuck();
-		
-		System.out.println("\nDuck Simulator: With Abstract Factory");
  
 		/*simulate(mallardDuck);
 		simulate(redheadDuck);
 		simulate(decoyDuck);
 		simulate(rubberDuck); */
 		
-		Duck myDuck = new RubberDuck();
-		  myDuck.setFlyBehaviour(new flyRocketPowered());
-		  myDuck.setQuackBehaviour(new Squeak());
-		  myDuck.setSwimBehaviour(new Float());
+		rubberDuck.setFlyBehaviour(flyfactory.CreateNoFly());
+		rubberDuck.setQuackBehaviour(quackfactory.CreateSqueak());
+		rubberDuck.setSwimBehaviour(swimfactory.CreateFloatSwim());
+		  
+		  mallardDuck.setQuackBehaviour(quackfactory.CreateQuack());
+		  mallardDuck.setFlyBehaviour(flyfactory.CreateFlyWithWings());
+		  mallardDuck.setSwimBehaviour(swimfactory.CreateGeneralSwim());
+		  
+		  redheadDuck.setFlyBehaviour(flyfactory.CreateFlyWithRocketPowered());
+		  redheadDuck.setQuackBehaviour(quackfactory.CreateQuack());
+		  redheadDuck.setSwimBehaviour(swimfactory.CreateGeneralSwim());
+		  
+		  decoyDuck.setFlyBehaviour(flyfactory.CreateNoFly());
+		  decoyDuck.setQuackBehaviour(quackfactory.CreateMuteQuack());
+		  decoyDuck.setSwimBehaviour(swimfactory.CreateFloatSwim());
 		  
 		System.out.println("Adding ducks to duck pond");
 		addDuck(mallardDuck);
 		addDuck(redheadDuck);
-		addDuck(myDuck);
+		addDuck(rubberDuck);
 		addDuck(decoyDuck);
 		
 		System.out.println("\nIdyllic pond");
