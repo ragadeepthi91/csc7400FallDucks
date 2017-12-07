@@ -1,10 +1,10 @@
 /**
- * Class: Object-Oriented Design and Analysis
- * Professor: Orlando Montalvo
- * Assignment: HW 9
- * 
- * Date: 2017-11-28
- */
+Class		: Object-Oriented Design and Analysis
+Professor	: Orlando Montalvo
+Assignment	: HW 9
+Student		: Deepthi, Manaswitha & Radhika
+Date        : 2017-12-06
+*/
 package edu.fitchugstate.csc7400.y2017fall.duckpond;
 
 import external.GIF;
@@ -22,45 +22,54 @@ import external.BitmapImpl;
 import external.GifImpl;
 
 /** 
- *  Base duck class that will be used for ducks on the pond
+ *  Sets methods to define duck properties
  */
 public class Duck implements DuckType {
-  /** 
-   *  Creates a duck object given the files that will be used for displaying and animating
-   *  
-   * @param bitmapFilname the still bitmap file name of the duck
-   * @param flyingGifFilename the flying GIF file name
-   * @param swimmingGifFilename the swimming GIF file name
-   */
+
 	
 	FlyBehaviour flyBehaviour;
 	QuackBehaviour quackBehaviour;
 	SwimBehaviour swimBehaviour;
 	
+	/**
+	 * Duck constructor to initialize animations
+	 * @param bitmapFilename Display image
+	 * @param flyingGifFilename Flying image
+	 * @param swimmingGifFilename Swimming image
+	 */
 	
   public Duck(String bitmapFilename, String flyingGifFilename, String swimmingGifFilename) {
     this.still = this.createBitmap(bitmapFilename);
     this.flying = this.createGif(flyingGifFilename);
     this.swimming = this.createGif(swimmingGifFilename);
   }
-
+  /**
+   * Sets the fly behavior
+   * @param fb FlyBehaviour object
+   */
   public void setFlyBehaviour(FlyBehaviour fb)
   {
 	  flyBehaviour = fb;
   }
-  
+  /**
+	 * Sets the Quack behavior of duck
+	 * @param qb QuackBehaviour object
+	 */
   public void setQuackBehaviour(QuackBehaviour qb)
   {
 	  quackBehaviour = qb;
   }
-  
+  /**
+	 * Sets the Swim behavior of duck
+	 * @param sb SwimBehaviour object
+	 */
   public void setSwimBehaviour(SwimBehaviour sb)
   {
 	  swimBehaviour = sb;
   }
   
-  /** 
-   *  Displays a still of the duck using bitmap
+  /**
+   * Displays duck using bitmap
    */
   public void display() 
   {
@@ -68,65 +77,53 @@ public class Duck implements DuckType {
   }
 
   /** 
-   *  Displays a flying animation using the GIF file.
-   */
-  
-  /*public void fly() 
-  {
-	    this.flying.animate();
-  }*/
-  
+   *  Duck flies and corresponding image is shown
+   */ 
   public void PerformFly()
   {
 	  flyBehaviour.fly(flying);
   }
   
+  /** 
+   *  Duck quacks and corresponding image is shown
+   */ 
   public void PerformQuack()
   {
 	  quackBehaviour.quack();
   }
   
+  /** 
+   *  Duck swims and corresponding image is shown
+   */ 
   public void PerformSwim()
   {
 	  swimBehaviour.swim(swimming);
   }
 
-
   /** 
-   *  Shows a swimming animation using the GIF file
-   */
-  /*
-  public void swim() {
-    this.swimming.animate();
-  }
-  */
-
-  /** 
-   *  Creates a new bitmap object given a file name
+   * Creates a new bitmap object 
+   * @param fileName image to be displayed
+   * @return Bitmap object
    */
   protected Bitmap createBitmap(String fileName) {
     return new BitmapImpl(fileName);
   }
 
   /** 
-   *  Creates a GIF object given a file name.e
+   * Creates a new GIF object 
+   * @param fileName image to be displayed
+   * @return GIF object
    */
   protected GIF createGif(String fileName) {
     return new GifImpl(fileName);
   }
 
-  /** 
-   *  For displaying a still duck image, used when adding ducks to the pond.
-   */
+  
   protected Bitmap still;
 
-  /** 
-   *  GIF of duck flying
-   */
+
   protected GIF flying;  
 
-  /** 
-   *  GIF of duck swimming
-   */
+  
   protected GIF swimming;
 }

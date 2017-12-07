@@ -1,20 +1,17 @@
 /**
- * Class: Object-Oriented Design and Analysis
- * Professor: Orlando Montalvo
- * Assignment: HW 9
- * 
- * Date: 2017-11-28
- */
-package edu.fitchugstate.csc7400.y2017fall.duckpond.ducks;
+Class		: Object-Oriented Design and Analysis
+Professor	: Orlando Montalvo
+Assignment	: HW 9
+Student		: Deepthi, Manaswitha & Radhika
+Date        : 2017-12-06
+*/
 
+package edu.fitchugstate.csc7400.y2017fall.duckpond.ducks;
 import edu.fitchugstate.csc7400.y2017fall.duckpond.Duck;
 /** 
- *  Wooden decoys for the duck.
+ *  Wooden decoy for the duck.
  */
 public class WoodenDecoy extends Duck {
-
-	
-
   /** 
    *  Creates a new wooden decoy with appropriate bitmaps and GIFs
    */

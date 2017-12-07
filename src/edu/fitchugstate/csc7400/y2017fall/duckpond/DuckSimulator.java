@@ -1,5 +1,11 @@
+/**
+Class		: Object-Oriented Design and Analysis
+Professor	: Orlando Montalvo
+Assignment	: HW 9
+Student		: Deepthi, Manaswitha & Radhika
+Date        : 2017-12-06
+*/
 package edu.fitchugstate.csc7400.y2017fall.duckpond;
-
 import edu.fitchugstate.csc7400.y2017fall.duckpond.FlyBehaviour.flyRocketPowered;
 import edu.fitchugstate.csc7400.y2017fall.duckpond.QuackBehaviour.Squeak;
 import edu.fitchugstate.csc7400.y2017fall.duckpond.SwimBehaviour.FloatSwim;
@@ -12,12 +18,18 @@ import edu.fitchugstate.csc7400.y2017fall.duckpond.behaviourfactories.SwimFactor
 import edu.fitchugstate.csc7400.y2017fall.duckpond.duckfactories.AbstractDuckFactory;
 import edu.fitchugstate.csc7400.y2017fall.duckpond.duckfactories.DuckFactory;
 
+/** 
+ *  Main program that simulates a pond
+ */
 public class DuckSimulator {
 
 	AbstractQuackBehaviourFactory quackfactory = new QuackFactory();
 	AbstractSwimBehaviourFactory swimfactory = new SwimFactory();
 	AbstractFlyBehaviourFactory flyfactory = new FlyFactory();
-	
+
+	/** 
+	 *  Runs the duck pond simulator
+	 */	
 	public static void main(String[] args) 
 	{
 		DuckSimulator simulator = new DuckSimulator();
@@ -25,6 +37,10 @@ public class DuckSimulator {
 		simulator.simulate(duckFactory);
 	}
 	
+	/**
+	 * creates and add behaviors to the different types of ducks
+	 * @param duckFactory
+	 */
 	void simulate(AbstractDuckFactory duckFactory) 
 	{
 		System.out.println("\nDuck Simulator: With Abstract Factory");
@@ -33,14 +49,9 @@ public class DuckSimulator {
 		Duck decoyDuck = duckFactory.CreateDecoyDuck();
 		Duck rubberDuck = duckFactory.CreateRubberDuck();
  
-		/*simulate(mallardDuck);
-		simulate(redheadDuck);
-		simulate(decoyDuck);
-		simulate(rubberDuck); */
-		
-		rubberDuck.setFlyBehaviour(flyfactory.CreateNoFly());
-		rubberDuck.setQuackBehaviour(quackfactory.CreateSqueak());
-		rubberDuck.setSwimBehaviour(swimfactory.CreateFloatSwim());
+		  rubberDuck.setFlyBehaviour(flyfactory.CreateNoFly());
+		  rubberDuck.setQuackBehaviour(quackfactory.CreateSqueak());
+		  rubberDuck.setSwimBehaviour(swimfactory.CreateFloatSwim());
 		  
 		  mallardDuck.setQuackBehaviour(quackfactory.CreateQuack());
 		  mallardDuck.setFlyBehaviour(flyfactory.CreateFlyWithWings());
@@ -81,12 +92,5 @@ public class DuckSimulator {
 	   * The pond for the simulation
 	   */
 	  private static DuckPond pond = new DuckPond();
- 
-	/*void simulate(Duck duck) 
-	{
-		duck.PerformQuack();
-		duck.PerformFly();
-		duck.PerformSwim();
-	}*/
 
 }

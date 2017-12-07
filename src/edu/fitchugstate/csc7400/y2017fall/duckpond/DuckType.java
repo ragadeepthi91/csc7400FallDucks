@@ -1,14 +1,15 @@
 /**
- * Class: Object-Oriented Design and Analysis
- * Professor: Orlando Montalvo
- * Assignment: HW 9
- * 
- * Date: 2017-11-28
- */
+Class		: Object-Oriented Design and Analysis
+Professor	: Orlando Montalvo
+Assignment	: HW 9
+Student		: Deepthi, Manaswitha & Radhika
+Date        : 2017-12-06
+*/
 package edu.fitchugstate.csc7400.y2017fall.duckpond;
 
 /** 
- *  This is a simple duck interface that will be used to display ducks on a pond in the pond simulator
+ *  This is a simple duck interface that defines methods for ducks
+ *  
  */
 public interface DuckType {
 
