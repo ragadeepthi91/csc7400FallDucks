@@ -2,27 +2,21 @@
 Class		: Object-Oriented Design and Analysis
 Professor	: Orlando Montalvo
 Assignment	: HW 9
-Student		: Deepthi, Manaswitha & Radhika
-Date        : 2017-12-06
+Student		: Ragadeepthi, Manaswitha & Radhika
+Date        : 2017-12-20
 */
 package edu.fitchugstate.csc7400.y2017fall.duckpond;
 
-import external.GIF;
 import edu.fitchugstate.csc7400.y2017fall.duckpond.FlyBehaviour.FlyBehaviour;
 import edu.fitchugstate.csc7400.y2017fall.duckpond.QuackBehaviour.QuackBehaviour;
 import edu.fitchugstate.csc7400.y2017fall.duckpond.SwimBehaviour.SwimBehaviour;
-import edu.fitchugstate.csc7400.y2017fall.duckpond.behaviourfactories.AbstractFlyBehaviourFactory;
-import edu.fitchugstate.csc7400.y2017fall.duckpond.behaviourfactories.AbstractQuackBehaviourFactory;
-import edu.fitchugstate.csc7400.y2017fall.duckpond.behaviourfactories.AbstractSwimBehaviourFactory;
-import edu.fitchugstate.csc7400.y2017fall.duckpond.behaviourfactories.FlyFactory;
-import edu.fitchugstate.csc7400.y2017fall.duckpond.behaviourfactories.QuackFactory;
-import edu.fitchugstate.csc7400.y2017fall.duckpond.behaviourfactories.SwimFactory;
+import edu.fitchugstate.csc7400.y2017fall.duckpond.behaviourfactories.AbstractBehaviorFactory;
 import external.Bitmap;
 import external.BitmapImpl;
-import external.GifImpl;
+
 
 /** 
- *  Sets methods to define duck properties
+ *  Sets methods to define different duck behaviors 
  */
 public class Duck implements DuckType {
 
@@ -32,42 +26,19 @@ public class Duck implements DuckType {
 	SwimBehaviour swimBehaviour;
 	
 	/**
-	 * Duck constructor to initialize animations
+	 * Duck constructor to assign behaviors using factories
+	 * 
 	 * @param bitmapFilename Display image
-	 * @param flyingGifFilename Flying image
-	 * @param swimmingGifFilename Swimming image
+	 * @param factory Behaviour factory
 	 */
 	
-  public Duck(String bitmapFilename, String flyingGifFilename, String swimmingGifFilename) {
+  public Duck(String bitmapFilename, AbstractBehaviorFactory factory) {
     this.still = this.createBitmap(bitmapFilename);
-    this.flying = this.createGif(flyingGifFilename);
-    this.swimming = this.createGif(swimmingGifFilename);
+    this.flyBehaviour = factory.CreateFlyBehavior();
+    this.quackBehaviour = factory.CreateQuackBehavior();
+    this.swimBehaviour = factory.CreateSwimBehavior();
   }
-  /**
-   * Sets the fly behavior
-   * @param fb FlyBehaviour object
-   */
-  public void setFlyBehaviour(FlyBehaviour fb)
-  {
-	  flyBehaviour = fb;
-  }
-  /**
-	 * Sets the Quack behavior of duck
-	 * @param qb QuackBehaviour object
-	 */
-  public void setQuackBehaviour(QuackBehaviour qb)
-  {
-	  quackBehaviour = qb;
-  }
-  /**
-	 * Sets the Swim behavior of duck
-	 * @param sb SwimBehaviour object
-	 */
-  public void setSwimBehaviour(SwimBehaviour sb)
-  {
-	  swimBehaviour = sb;
-  }
-  
+
   /**
    * Displays duck using bitmap
    */
@@ -81,11 +52,11 @@ public class Duck implements DuckType {
    */ 
   public void PerformFly()
   {
-	  flyBehaviour.fly(flying);
+	  flyBehaviour.fly();
   }
   
   /** 
-   *  Duck quacks and corresponding image is shown
+   *  Duck quacks 
    */ 
   public void PerformQuack()
   {
@@ -97,7 +68,7 @@ public class Duck implements DuckType {
    */ 
   public void PerformSwim()
   {
-	  swimBehaviour.swim(swimming);
+	  swimBehaviour.swim();
   }
 
   /** 
@@ -108,22 +79,7 @@ public class Duck implements DuckType {
   protected Bitmap createBitmap(String fileName) {
     return new BitmapImpl(fileName);
   }
-
-  /** 
-   * Creates a new GIF object 
-   * @param fileName image to be displayed
-   * @return GIF object
-   */
-  protected GIF createGif(String fileName) {
-    return new GifImpl(fileName);
-  }
-
-  
+ 
   protected Bitmap still;
-
-
-  protected GIF flying;  
-
-  
-  protected GIF swimming;
+ 
 }

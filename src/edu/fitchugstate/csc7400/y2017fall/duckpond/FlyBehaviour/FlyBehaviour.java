@@ -3,19 +3,18 @@ Class		: Object-Oriented Design and Analysis
 Professor	: Orlando Montalvo
 Assignment	: HW 9
 Student		: Deepthi, Manaswitha & Radhika
-Date        : 2017-12-06
+Date        : 2017-12-20
 */
 package edu.fitchugstate.csc7400.y2017fall.duckpond.FlyBehaviour;
-import external.GIF;
 
 /** 
- *  contains Fly method
+ *  contains Fly method declaration
  */
 public interface FlyBehaviour 
 {	
 	/**
-	 * Fly method
-	 * @param flying fly image
+	 * Fly method declaration
+	 * 
 	 */
-   public void fly(GIF flying);
+   public void fly();
 }

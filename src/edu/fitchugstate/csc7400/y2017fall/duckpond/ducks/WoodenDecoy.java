@@ -3,22 +3,22 @@ Class		: Object-Oriented Design and Analysis
 Professor	: Orlando Montalvo
 Assignment	: HW 9
 Student		: Deepthi, Manaswitha & Radhika
-Date        : 2017-12-06
+Date        : 2017-12-20
 */
 
 package edu.fitchugstate.csc7400.y2017fall.duckpond.ducks;
 import edu.fitchugstate.csc7400.y2017fall.duckpond.Duck;
+import edu.fitchugstate.csc7400.y2017fall.duckpond.behaviourfactories.*;
 /** 
- *  Wooden decoy for the duck.
+ *  Wooden decoy duck.
  */
 public class WoodenDecoy extends Duck {
-  /** 
-   *  Creates a new wooden decoy with appropriate bitmaps and GIFs
-   */
+	/** 
+	   *  Creates a new decoy duck with appropriate bitmap and behavior using factory
+	   */
   public WoodenDecoy() 
   {
-    super("decoy_still.bmp", null, "decoy_swim.gif");
-	System.out.println("I am a wooden decoy duck");
+    super("decoy_still.bmp", new DecoyDuckBehaviorFactory(null, "decoy_swim.gif"));
   }
   
 }
